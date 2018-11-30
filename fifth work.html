@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style type="text/css">
+        .fanhui{
+            display:none;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background-color: blue;
+            border-radius: 5px;
+            color: red;
+            z-index: 99;
+
+        }
+    </style>
+</head>
+<body>
+    <button onclick="change1()" >增大</button>
+    <button onclick="change2()" >减小</button>
+    <button onclick="change3()" >右移</button>
+    <button onclick="change4()" >左移</button>
+    <button onclick="change5()" >上移</button>
+    <button onclick="change6()" >下移</button>
+    <button style=" z-index: 1;display: none; position: fixed;right: 50px; bottom: 50px;" id="fanhui" onclick="topFunction()" >back</button>
+    <!-- <div id="div1" style=" position: absolute; width: 50px;height: 50px;background-color: aqua; left: 100px; top: 100px; "></div> -->
+
+    <div id="sd" style=" padding-bottom: 3000px; background-color: white; z-index: -2; " ></div>
+    <script>
+        var sd = document.getElementById('sd');
+        var hhh = document.createElement("div");
+        hhh.setAttribute('id','div');
+        sd.appendChild(hhh);
+        var div1 = document.getElementById('div');
+        div1.style.background="aqua";
+        div1.style.width='50px';
+        div1.style.height='50px';
+        div1.style.position='absolute';
+        div1.style.left='100px';
+        div1.style.top='100px';
+
+        function change1(){
+            var div=document.getElementById("div");
+            var w=parseInt(div.style.width);
+            var h=parseInt(div.style.height);
+            div.style.width=(w+10)+"px";
+            div.style.height=(h+10)+"px";
+            div.style.transition="0.3s";
+        }
+        function change2(){
+            var div=document.getElementById("div");
+            var w=parseInt(div.style.width);
+            var h=parseInt(div.style.height);
+            div.style.width=(w-10)+"px";
+            div.style.height=(h-10)+"px";
+            div.style.transition="0.3s";
+        }
+        function change3(){
+            var div=document.getElementById("div");
+            var r=parseInt(div.style.left);
+            r=r+10;
+            div.style.left=r+"px";
+            div.style.transition="0.3s";
+        }
+        function change4(){
+            var div=document.getElementById("div");
+            var l=parseInt(div.style.left);
+            l=l-10;
+            div.style.left=l+"px";
+            div.style.transition="0.3s";
+        }
+        function change5(){
+            var div=document.getElementById("div");
+            var u=parseInt(div.style.top);
+            u=u-10;
+            div.style.top=u+"px";
+            div.style.transition="0.3s"
+        }
+        function change6(){
+            var div=document.getElementById("div");
+            var u=parseInt(div.style.top);
+            u=u+10;
+            div.style.top=u+"px";
+            div.style.transition="0.3s"
+        }
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("fanhui").style.display = "block";
+            } else {
+            document.getElementById("fanhui").style.display = "none";
+        }
+    }
+        
+        function topFunction() {
+            var df = setInterval(function(){
+            if(document.documentElement.scrollTop<=0){
+                clearInterval(df);
+            }
+            else{
+            document.documentElement.scrollTop-=10;
+                // setInterval(df);
+            }
+            },0.3);
+        }
+    </script>
+</body>
+</html>
